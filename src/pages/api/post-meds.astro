@@ -4,7 +4,7 @@ import Meds from './doodles/meds.astro';
 
 export const partial = true;
 
-const reader = await Astro.request.body?.getReader();
+const reader = Astro.request.body?.getReader();
 let result = '';
 const decoder = new TextDecoder('utf-8');
 
