@@ -23,6 +23,7 @@ if (error) {
     <table>
         <thead>
             <tr>
+                <td>Hymn No.</td>
                 <th>Title</th>
                 <th>First Line</th>
                 <th>Melody</th>
@@ -34,6 +35,7 @@ if (error) {
         <tbody>
             {data?.map(i => (
                 <tr>
+                    <td>{i.id}</td>
                     <td>{i.title}</td>
                     <td>{i.first_line}</td>
                     <td>
