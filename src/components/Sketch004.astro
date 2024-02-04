@@ -1,4 +1,7 @@
 ---
+declare global {
+    var p5: any;
+}
 ---
 <div id="sketch004" />
 
@@ -17,7 +20,7 @@
             this.y = this.y + ( v.y || 0 );
         }
 
-        subtract( v: { x?: number, y?: number } ) {
+        subtract( v: { x: number, y: number } ) {
             this.x -= v.x;
             this.y -= v.y;
         }
@@ -92,7 +95,7 @@
     }
   }
 
-    const sketch = ( p ) => {
+    const sketch = ( p: any ) => {
       p.setup = () => {
         const canvas = p.createCanvas( width, height );
         canvas.parent( 'sketch004' );

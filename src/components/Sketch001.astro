@@ -1,4 +1,7 @@
 ---
+declare global {
+    var p5: any;
+}
 ---
 <div id="sketch001" />
 
@@ -8,7 +11,7 @@
     let width = 200;
     let height = 200;
 
-    const sketch = ( p ) => {
+    const sketch = ( p: any ) => {
         p.setup = () => {
             const canvas = p.createCanvas( width, height );
             canvas.attribute( 'data-hidden', 'false' );
