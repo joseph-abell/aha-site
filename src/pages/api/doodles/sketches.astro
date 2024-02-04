@@ -1,0 +1,69 @@
+---
+import Sketch001 from "../../../components/Sketch001.astro";
+import Sketch002 from "../../../components/Sketch002.astro";
+import Sketch003 from "../../../components/Sketch003.astro";
+import Sketch004 from "../../../components/Sketch004.astro";
+import Sketch005 from "../../../components/Sketch005.astro";
+import Sketch006 from "../../../components/Sketch006.astro";
+
+export const partial = true;
+---
+<title>Code Sketches - Joseph Abell</title>
+<div class='container'>
+    <h1>P5.js Sketches</h1>
+
+        <noscript>
+            <p>
+                I've been following along with Daniel Shiffman's Nature of Code, where you use basic
+                code to replicate nature. It's a lovely little computer science book.
+              </p>
+
+              <p>Unfortunately we rely on JavaScript to show these Sketches, and your browser does not support JS, so this page will look pretty empty.</p>
+
+              <style>
+                .scriptDependant { display: none; }
+              </style>
+        </noscript>
+
+      <div class="scriptDependant">
+        <p>
+            I've been following along with Daniel Shiffman's Nature of Code, where you use basic
+            code to replicate nature. It's a lovely little computer science book. Here are my
+            P5.js sketches I've made while following along with the book.
+          </p>
+    
+    
+          <h2>Random Walks</h2>
+          <div style={{ display: 'flex', 'gap': '10px' }}>
+            <div style={{ width: '200px' }}>
+              <Sketch001 />
+              <p>Orthagonal Random Walk</p>
+            </div>
+            <div style={{ width: '200px' }}>
+              <Sketch002 />
+              <p>8 way random walk with vectors</p>
+            </div>
+            <div style={{ width: '200px' }}>
+              <Sketch003 />
+              <p>Perlin noise</p>
+            </div>
+    
+          </div>
+    
+          <h2>Vectors</h2>
+          <div style={{ display: 'flex', 'gap': '10px' }}>
+            <div style={{ width: '200px' }}>
+              <Sketch004 />
+              <p>Gravity</p>
+            </div>
+            <div style={{ width: '200px' }}>
+              <Sketch005 />
+              <p>Ball follows mouse</p>
+            </div>
+            <div style={{ width: '200px' }}>
+              <Sketch006 />
+              <p>Click sketch, then use WASD to control ball</p>
+            </div>
+          </div>
+      </div>
+</div>

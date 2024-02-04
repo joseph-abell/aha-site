@@ -1,0 +1,71 @@
+---
+import supabase from '../../db.ts';
+export const partial = true;
+
+const id = new Date().toISOString().split('T')[0];
+let breakfast = '';
+let lunch = '';
+let dinner = '';
+let carbs = '';
+
+const { data, error } = await supabase
+    .from('medicineTracker')
+    .select()
+    .eq('id', id)
+    .maybeSingle();
+
+if (error) {
+    console.error('Error fetching medicine intake:', error);
+} else {
+    if (data) {
+        breakfast = data.breakfast;
+        lunch = data.lunch;
+        dinner = data.dinner;
+        carbs = data.carbs;
+    }
+}
+---
+<div class='container'>
+    <title>Add Medicine - Joseph Abell</title>
+    <h1>Add Medicine</h1>
+
+    <noscript>
+        <p>The form I use to fill in my medication uses JS while sending the data to the database. As your browser does not support JS, I've hidden the form.</p>
+
+        <style>
+            .scriptDependant {
+                display: none;
+            }
+        </style>
+    </noscript>
+
+    <form hx-post="/api/post-meds" hx-push-url='/doodles/meds' hx-target="#main" class="scriptDependant">
+        <input type="hidden" name="'id" value={id} />
+        <p>
+            <label>
+                <input type="checkbox" checked={breakfast} name="breakfast" />
+                Breakfast
+            </label>
+        </p>
+
+        <p>
+            <label>
+                <input type="checkbox" checked={lunch} name="lunch" />
+                Lunch
+            </label>
+        </p>
+
+        <p>
+            <label>
+                <input type="checkbox" checked={dinner} name="dinner" />
+                Dinner
+            </label>
+        </p>
+
+        <input type="hidden" value={carbs} name="carbs" />
+
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+</div>

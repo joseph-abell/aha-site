@@ -1,0 +1,6 @@
+---
+const {href, theme = 'main'} = Astro.props;
+const {apiHref = `/api${href}`} = Astro.props;
+
+---
+<a hx-get={apiHref} href={href} hx-push-url={href} hx-target='#main' class={theme}><slot /></a>

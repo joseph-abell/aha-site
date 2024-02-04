@@ -1,0 +1,25 @@
+---
+export const partial = true;
+---
+<title>Themes - Joseph Abell</title>
+<div class='container'>
+    <h1>Themes</h1>
+
+    <noscript>
+        <p>Sorry, we use JavaScript to change the website's themes. Your browser does not support Javascript.</p>
+
+        <style>
+            .themebutton {
+                display: none;
+            }
+        </style>
+    </noscript>
+
+    <button class='themebutton' @click="theme = 'blue'">Blue</button>
+    <button class='themebutton' @click="theme = 'bluedark'">Blue Dark</button>
+    <button class='themebutton' @click="theme = 'magenta'">Magenta</button>
+    <button class='themebutton' @click="theme = 'magentadark'">Magenta Dark</button>
+    <button class='themebutton' @click="theme = 'cabaret'">Cabaret</button>
+    <button class='themebutton' @click="theme = 'firefly'">Firefly</button>
+    <button class='themebutton' @click="theme = 'eucalyptus'">Eucalyptus</button>
+</div>

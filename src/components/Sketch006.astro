@@ -1,0 +1,93 @@
+---
+---
+<div id="sketch006" />
+
+<script>
+    class Vector {
+        x: number = 0;
+        y: number = 0;
+
+        constructor( x = 0, y = 0 ) {
+            this.x = x;
+            this.y = y;
+        }
+
+        add( v: { x?: number, y?: number, max?: number } ) {
+            this.x = this.x + ( v.x || 0 );
+            this.y = this.y + ( v.y || 0 );
+        }
+
+        subtract( v: { x?: number, y?: number } ) {
+            this.x -= v.x;
+            this.y -= v.y;
+        }
+
+        multiply( n: number ) {
+            this.x *= n;
+            this.y *= n;
+        }
+
+        divide( n: number ) {
+            this.x = this.x / n;
+            this.y = this.y / n;
+        }
+
+        mag() {
+            return Math.sqrt( ( this.x * this.x ) + ( this.y * this.y ) )
+        }
+
+        normalize() {
+            const m = this.mag();
+
+            if ( m != 0 ) {
+                this.divide( m );
+            }
+        }
+
+        limit( max: number ) {
+            const mag = this.mag();
+            if ( mag > max ) {
+                this.normalize()
+                this.multiply( max );
+            }
+        }
+    }
+    let width = 200;
+  let height = 200;
+
+  let position = new Vector( 100, 100 );
+  let velocity = new Vector( 1.1, 1.1 );
+  let topspeed = 5;
+
+  function keyPressed( p: { key?: string } ) {
+    if ( p.key === 'w' ) velocity.add( { y: -1 } )
+    if ( p.key === 's' ) velocity.add( { y: 1 } )
+    if ( p.key === 'a' ) velocity.add( { x: -1 } )
+    if ( p.key === 'd' ) velocity.add( { x: 1 } )
+  }
+
+    const sketch = ( p ) => {
+      p.setup = () => {
+        const canvas = p.createCanvas( width, height );
+        canvas.parent( 'sketch006' );
+        canvas.style( 'visibility', 'visible' );
+        canvas.attribute( 'data-hidden', 'false' );
+
+        p.background( 220 );
+        p.stroke( 0 );
+      };
+
+      p.draw = () => {
+        keyPressed( p );
+        velocity.limit( topspeed );
+        position.add( velocity );
+
+        position.x = Math.min( Math.max( 0, position.x ), 200 );
+        position.y = Math.min( Math.max( 0, position.y ), 200 );
+
+        p.ellipse( position.x, position.y, 10 );
+        velocity.multiply( 0 );
+      };
+    };
+    new p5( sketch, 'sketch006' );
+</script>

@@ -1,0 +1,43 @@
+---
+import supabase from "../../../db";
+export const partial = true;
+let {data} = await supabase.from('medicineTracker').select().order('id', { ascending: false });
+const rowHeight = 7;
+---
+<title>Medicine Tracker - Joseph Abell</title>
+<div style={{
+    width: '100%',
+    height: 'calc(100vh - 107px)',
+    background: '#333',
+    position: 'relative',
+    'margin-top': '-20px',
+    'margin-bottom': '-20px'
+}}>
+    {data && (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="100%"
+            height={data.length * 3 * 10}
+            style={{ position: 'absolute', 'z-index': 0 }}
+        >
+            {data.map((row: any, index: number) => {
+                const breakfastHeight = (index * 3 * rowHeight) + (rowHeight * 0.5);
+                const lunchHeight = (index * 3 * rowHeight) + (rowHeight * 0.5) + rowHeight;
+                const dinnerHeight = (index * 3 * rowHeight) + (rowHeight * 0.5) + (rowHeight * 2);
+
+                return (
+                    <g>
+                        <line x1="0" y1={breakfastHeight} x2="100%" y2={breakfastHeight} stroke={row.breakfast ? 'moccasin' : 'black'} stroke-width={rowHeight} />
+                        <line x1="0" y1={lunchHeight} x2="100%" y2={lunchHeight} stroke={row.lunch ? 'deepskyblue' : 'black'} stroke-width={rowHeight} />
+                        <line x1="0" y1={dinnerHeight} x2="100%" y2={dinnerHeight} stroke={row.dinner ? 'tomato' : 'black'} stroke-width={rowHeight} />
+                    </g>
+                )
+            })} 
+        </svg>
+    )}
+    <div class="container meds-container" style={{ position: 'absolute', 'z-index': 1, left: '50vw', 'margin-left': '-40vw', 'margin-top': '40px', 'border': '2px solid #333', background: 'white', padding: '20px' }}>
+        <h1>Medicine Tracker</h1>
+
+        <p>Each of these lines in the background show me successfully taking my diabetes medication. Yellow is for breakfast, blue is for lunch, and red is for dinner. If there are any black gaps, it shows a time where I forgot to take my meds. If the lines are in the first three lines, odds are it's because it's not time to take my meds yet.</p>
+    </div>
+</div>

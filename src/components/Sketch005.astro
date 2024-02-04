@@ -1,0 +1,91 @@
+---
+---
+<div id="sketch005" />
+
+<script>
+    class Vector {
+        x: number = 0;
+        y: number = 0;
+
+        constructor( x = 0, y = 0 ) {
+            this.x = x;
+            this.y = y;
+        }
+
+        add( v: { x?: number, y?: number, max?: number } ) {
+            this.x = this.x + ( v.x || 0 );
+            this.y = this.y + ( v.y || 0 );
+        }
+
+        subtract( v: { x?: number, y?: number } ) {
+            this.x -= v.x;
+            this.y -= v.y;
+        }
+
+        multiply( n: number ) {
+            this.x *= n;
+            this.y *= n;
+        }
+
+        divide( n: number ) {
+            this.x = this.x / n;
+            this.y = this.y / n;
+        }
+
+        mag() {
+            return Math.sqrt( ( this.x * this.x ) + ( this.y * this.y ) )
+        }
+
+        normalize() {
+            const m = this.mag();
+
+            if ( m != 0 ) {
+                this.divide( m );
+            }
+        }
+
+        limit( max: number ) {
+            const mag = this.mag();
+            if ( mag > max ) {
+                this.normalize()
+                this.multiply( max );
+            }
+        }
+    }
+    let width = 200;
+  let height = 200;
+
+  let position = new Vector( 100, 100 );
+  let mouse = new Vector();
+  let velocity = new Vector( 0, 0 );
+  let mass = 3;
+  let topspeed = 5;
+
+    const sketch = ( p ) => {
+      p.setup = () => {
+        const canvas = p.createCanvas( width, height );
+        canvas.parent( 'sketch005' );
+        canvas.style( 'visibility', 'visible' );
+        canvas.attribute( 'data-hidden', 'false' );
+
+        p.background( 220 );
+        p.stroke( 0 );
+      };
+
+      p.draw = () => {
+        mouse.x = p.mouseX;
+        mouse.y = p.mouseY;
+
+        mouse.subtract( position )
+        mouse.normalize()
+        mouse.divide( mass )
+        velocity.add( mouse );
+        velocity.limit( topspeed );
+        position.add( velocity );
+
+        p.ellipse( position.x, position.y, 10 );
+        velocity.multiply( 0 )
+      };
+    };
+    new p5( sketch, 'sketch005' );
+</script>
