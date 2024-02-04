@@ -37,15 +37,18 @@ if (error) {
                     <td>{i.first_line}</td>
                     <td>
                         {i.melody === 'not_started' && (<div class="red_circle"></div>)}
+                        {i.melody === 'not_learned' && (<div class="red_circle"></div>)}
                         {i.melody === 'learning' && (<div class="yellow_circle"></div>)}
                         {i.melody === 'learned' && (<div class="green_circle"></div>)}
                     </td>
                     <td>
                         {i.bass === 'not_started' && (<div class="red_circle"></div>)}
+                        {i.bass === 'not_learned' && (<div class="red_circle"></div>)}
                         {i.bass === 'learning' && (<div class="yellow_circle"></div>)}
                         {i.bass === 'learned' && (<div class="green_circle"></div>)}</td>
                     <td>
                         {i.both_hands === 'not_started' && (<div class="red_circle"></div>)}
+                        {i.both_hands === 'not_learned' && (<div class="red_circle"></div>)}
                         {i.both_hands === 'learning' && (<div class="yellow_circle"></div>)}
                         {i.both_hands === 'learned' && (<div class="green_circle"></div>)}
                     </td>
