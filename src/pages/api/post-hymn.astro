@@ -15,12 +15,11 @@ const read = async () => reader?.read().then(({ done, value }) => {
 });
 
 await read();
-const [id, title, first_line, melody, bass, both_hands, confident] = result.split('&').map(i => i.split('=')[1])
+const [id, title, melody, bass, both_hands, confident] = result.split('&').map(i => i.split('=')[1])
 
 await supabase.from('hymns').upsert({
     id,
     title: title.split('%20').join(' ').split('%25').join(','),
-    first_line: first_line.split('%20').join(' ').split('%25').join(','),
     melody,
     bass,
     both_hands,

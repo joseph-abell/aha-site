@@ -25,7 +25,6 @@ if (error) {
             <tr>
                 <td>Hymn No.</td>
                 <th>Title</th>
-                <th>First Line</th>
                 <th>Melody</th>
                 <th>Bass</th>
                 <th>Both Hands</th>
@@ -37,7 +36,6 @@ if (error) {
                 <tr>
                     <td>{i.id}</td>
                     <td>{i.title}</td>
-                    <td>{i.first_line}</td>
                     <td>
                         {i.melody === 'not_started' && (<div class="red_circle"></div>)}
                         {i.melody === 'not_learned' && (<div class="red_circle"></div>)}
