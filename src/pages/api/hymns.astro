@@ -28,7 +28,6 @@ if (error) {
                 <th>Melody</th>
                 <th>Bass</th>
                 <th>Both Hands</th>
-                <th>Confident to play</th>
             </tr>
         </thead>
         <tbody>
@@ -52,10 +51,6 @@ if (error) {
                         {i.both_hands === 'not_learned' && (<div class="red_circle"></div>)}
                         {i.both_hands === 'learning' && (<div class="yellow_circle"></div>)}
                         {i.both_hands === 'learned' && (<div class="green_circle"></div>)}
-                    </td>
-                    <td>
-                        {i.confident === false && (<div class="red_circle"></div>)}
-                        {i.confident === true && (<div class="green_circle"></div>)}
                     </td>
                 </tr>
             ))}

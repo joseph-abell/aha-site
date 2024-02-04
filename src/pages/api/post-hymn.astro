@@ -15,7 +15,7 @@ const read = async () => reader?.read().then(({ done, value }) => {
 });
 
 await read();
-const [id, title, melody, bass, both_hands, confident] = result.split('&').map(i => i.split('=')[1])
+const [id, title, melody, bass, both_hands] = result.split('&').map(i => i.split('=')[1])
 
 await supabase.from('hymns').upsert({
     id,
@@ -23,7 +23,6 @@ await supabase.from('hymns').upsert({
     melody,
     bass,
     both_hands,
-    confident: confident === 'on',
 });
 ---
 <Hymns />
