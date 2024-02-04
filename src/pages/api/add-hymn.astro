@@ -1,0 +1,81 @@
+---
+export const partial = true;
+
+let id = ''
+let title = ''
+let first_line = ''
+let melody = 'not_learned'
+let bass = 'not_learned'
+let both_hands = 'not_learned'
+let confident = false
+
+---
+<div class='container'>
+    <title>Add Hymn - Joseph Abell</title>
+    <h1>Add Hymn</h1>
+
+    <noscript>
+        <p>The form I use to fill in hymns uses JS while sending the data to the database. As your browser does not support JS, I've hidden the form.</p>
+
+        <style>
+            .scriptDependant {
+                display: none;
+            }
+        </style>
+    </noscript>
+
+    <form hx-post="/api/post-hymn" hx-push-url='/hymns' hx-target="#main" class="scriptDependant">
+        <p>
+            <label>
+                <input type="number" value={id} name="id" />
+                Hymn No.
+            </label>
+        </p>
+
+        <p>
+            <label>
+                <input type="text" value={title} name="title" />
+                Title
+            </label>
+        </p>
+
+        <p>
+            <label>
+                <input type="text" value={first_line} name="first_line" />
+                First Line
+            </label>
+        </p>
+
+        <p>
+            <label>
+                <input type="text" value={melody} name="melody" />
+                Melody
+            </label>
+        </p>
+
+        <p>
+            <label>
+                <input type="text" value={bass} name="bass" />
+                Bass
+            </label>
+        </p>
+
+        <p>
+            <label>
+                <input type="text" value={both_hands} name="both_hands" />
+                Both Hands
+            </label>
+        </p>
+
+        <p>
+            <label>
+                <input type="checkbox" checked={confident} name="confident" />
+                Confident
+            </label>
+        </p>
+
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+</div>
