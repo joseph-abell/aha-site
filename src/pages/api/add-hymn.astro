@@ -14,12 +14,6 @@ let both_hands = 'not_learned'
 
     <noscript>
         <p>The form I use to fill in hymns uses JS while sending the data to the database. As your browser does not support JS, I've hidden the form.</p>
-
-        <style>
-            .script_dependant {
-                display: none;
-            }
-        </style>
     </noscript>
 
     <form hx-post="/api/post-hymn" hx-push-url='/hymns' hx-target="#main" class="script_dependant">
