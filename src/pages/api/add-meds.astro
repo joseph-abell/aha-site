@@ -29,16 +29,6 @@ if (error) {
     <title>Add Medicine - Joseph Abell</title>
     <h1>Add Medicine</h1>
 
-    <noscript>
-        <p>The form I use to fill in my medication uses JS while sending the data to the database. As your browser does not support JS, I've hidden the form.</p>
-
-        <style>
-            .scriptDependant {
-                display: none;
-            }
-        </style>
-    </noscript>
-
     <form hx-post="/api/post-meds" hx-push-url='/doodles/meds' hx-target="#main" class="scriptDependant">
         <input type="hidden" name="'id" value={id} />
         <p>
