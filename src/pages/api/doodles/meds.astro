@@ -2,8 +2,8 @@
 import supabase from "../../../db";
 export const partial = true;
 let {data} = await supabase.from('medicineTracker').select().order('id', { ascending: false });
-const rowHeight = 7;
-const sectionHeight = 2;
+const rowHeight = 5;
+const sectionCount = 2;
 ---
 <title>Medicine Tracker - Joseph Abell</title>
 <div style={{
@@ -18,13 +18,13 @@ const sectionHeight = 2;
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="100%"
-            height={data.length * sectionHeight * 10}
+            height={data.length * sectionCount * 10}
             style={{ position: 'absolute', 'z-index': 0 }}
         >
             {data.map((row: any, index: number) => {
-                const breakfastHeight = (index * sectionHeight * rowHeight) + (rowHeight * 0.5);
-                const lunchHeight = (index * sectionHeight * rowHeight) + (rowHeight * 0.5) + rowHeight;
-                const dinnerHeight = (index * sectionHeight * rowHeight) + (rowHeight * 0.5) + (rowHeight * 2);
+                const breakfastHeight = (index * sectionCount * rowHeight) + (rowHeight * 0.5);
+                const lunchHeight = (index * sectionCount * rowHeight) + (rowHeight * 0.5) + rowHeight;
+                const dinnerHeight = (index * sectionCount * rowHeight) + (rowHeight * 0.5) + (rowHeight * 2);
 
                 return (
                     <g>
