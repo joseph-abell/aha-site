@@ -3,7 +3,7 @@ import supabase from "../../../db";
 export const partial = true;
 let {data} = await supabase.from('medicineTracker').select().order('id', { ascending: false });
 const rowHeight = 5;
-const sectionCount = 2;
+const sectionCount = 3;
 ---
 <title>Medicine Tracker - Joseph Abell</title>
 <div style={{
